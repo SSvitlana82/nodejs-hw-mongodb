@@ -31,11 +31,13 @@ export const setupServer = () => {
 
     if (contact) {
       res.json({
+        status: 200,
         data: contact,
         message: `Successfully found contact with id ${contactId}!`,
       });
     } else {
       res.status(404).json({
+        status: 404,
         message: 'Not found',
       });
     }
