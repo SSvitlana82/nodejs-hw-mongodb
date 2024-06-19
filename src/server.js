@@ -13,13 +13,13 @@ export const setupServer = () => {
   const app = express();
   app.use(express.json());
   app.use(cors());
-  /*  app.use(
+  app.use(
     pino({
       transport: {
         target: 'pino-pretty',
       },
     }),
-  ); */
+  );
   app.use(contactRouter);
 
   app.use('*', notFoundHandler);
