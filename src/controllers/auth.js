@@ -1,6 +1,6 @@
-import { registerUser, refreshUsersSession } from '../services/auth';
-import { loginUser, logoutUser } from '../services/auth';
-import { ONE_MONTH } from '../constants';
+import { registerUser, refreshUsersSession } from '../services/auth.js';
+import { loginUser, logoutUser } from '../services/auth.js';
+import { ONE_MONTH } from '../constants/index.js';
 export const registerUserController = async (req, res) => {
   const user = await registerUser(req.body);
 

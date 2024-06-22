@@ -14,7 +14,7 @@ import {
 } from '../validation/contacts.js';
 
 import { isValidId } from '../middleware/isValidId.js';
-import { authenticate } from '../middlewares/authenticate.js';
+import { authenticate } from '../middleware/authenticate.js';
 const router = Router();
 router.use(authenticate);
 router.get('/', ctrlWrapper(getContactsController));
