@@ -102,14 +102,12 @@ export const requestResetToken = async (email) => {
       expiresIn: '5m',
     },
   );
-  console.log(resetToken);
+  const url = `${env('APP_DOMAIN')}/reset-password?token=${resetToken}`;
   await sendEmail({
     from: env(SMTP.SMTP_FROM),
     to: email,
     subject: 'Reset your password',
-    html: `<p>Click <a href="${env(
-      'APP_DOMAIN',
-    )}${resetToken}">here</a> to reset your password!</p>`,
+    html: `<p>Click <a href=${url}>here</a> to reset your password!</p>`,
   });
 };
 export const resetPassword = async (payload) => {
