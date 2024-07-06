@@ -1,8 +1,8 @@
 tags:
   - auth
-summary: User login
-operationId: loginUser
-description: 'Authorization a user'
+summary: User register
+operationId: registerUser
+description: 'Registration a user'
 security: []
 
 requestBody:
@@ -11,22 +11,27 @@ requestBody:
       schema:
         type: object
         required:
+          - name
           - email
           - password
 
         properties:
+          name:
+            description: "user's name"
+            type: string
+            example: 'Joe Bob'
           email:
-            description: "user's email for login"
+            description: "user's email for registration"
             type: string
             example: 'example@gmail.com'
           password:
-            description: 'Password for user authorization'
+            description: 'Password for user registration'
             type: string
             example: agdgdjhagsdjag
 
 responses:
-  '200':
-    description: 'Authorization a user'
+  '201':
+    description: 'Registration a user'
     content:
       application/json:
         schema:
@@ -38,13 +43,13 @@ responses:
           properties:
             status:
               type: integer
-              example: 200
+              example: 201
             message:
               type: string
-              example: Successfully logged in an user!
+              example: Successfully registered a user!
             data:
               type: object
-              $ref: ../../../components/schemas/login.yaml
+              $ref: ../../../components/schemas/register.yaml
   '401':
     $ref: '../../../components/responses/401.yaml'
   '500':

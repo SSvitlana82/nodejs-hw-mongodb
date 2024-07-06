@@ -6,6 +6,8 @@ import cookieParser from 'cookie-parser';
 import router from './routers/index.js';
 import { notFoundHandler } from './middleware/notFoundHandler.js';
 import { errorHandler } from './middleware/errorHandler.js';
+import { swaggerDocs } from './middleware/swaggerDocs.js';
+import { UPLOAD_DIR } from './constants/index.js';
 
 const PORT = Number(env('PORT', '3000'));
 
@@ -22,6 +24,8 @@ export const setupServer = () => {
   );
   app.use(cookieParser());
   app.use(router);
+  app.use('/uploads', express.static(UPLOAD_DIR));
+  app.use('/api-docs', swaggerDocs());
 
   app.use('*', notFoundHandler);
 
