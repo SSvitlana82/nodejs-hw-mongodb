@@ -15,7 +15,13 @@ tags:
 servers:
   - url: <http://localhost:3000>
   - url: https://contactsapp-n5b9.onrender.com
-paths:
+paths: # тут  посилання на ендпоінти
+  /contacts:
+    get:
+      $ref: ../swagger/paths/contacts/get.yaml
+    post:
+      $ref: ../swagger/paths/contacts/post.yaml
+
   /contacts/{contactId}:
     get:
       $ref: ../swagger/paths/contacts/{id}/get.yaml
@@ -23,7 +29,7 @@ paths:
       $ref: ../swagger/paths/contacts/{id}/patch.yaml
     delete:
       $ref: ../swagger/paths/contacts/{id}/delete.yaml
-  # тут будуть посилання на ендпоінти
+
 components:
   securitySchemes:
     bearerAuth:
